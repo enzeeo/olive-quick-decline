@@ -98,9 +98,9 @@ def reset_game():
   game_over = False
 
   # Reset timer to full time
-  total_time = 120000  # 60 seconds again
+  total_time = 120000 
 
-font_big = pygame.font.SysFont('Arial', 50, bold=True)
+font_big = pygame.font.SysFont('Arial', 40, bold=True)
 font_small = pygame.font.SysFont('Arial', 30)
 font_smallest = pygame.font.SysFont('Arial', 20)
 
@@ -123,7 +123,7 @@ def draw_gameover_screen(screen, score):
   screen.blit(game_over_text, (panel_rect.centerx - game_over_text.get_width() // 2, 140))
 
   # Draw level (static for now, or you could pass level if needed)
-  info_text = font_small.render("Your Scored", True, WHITE)
+  info_text = font_small.render("Your Profit", True, WHITE)
   screen.blit(info_text, (panel_rect.centerx - info_text.get_width() // 2, 200))
 
   # Draw score
@@ -149,7 +149,7 @@ def draw_start_screen(screen):
   pygame.draw.rect(screen, DARK_BROWN, panel_rect, 5, border_radius=30)
 
   # Title
-  title_text = font_big.render("WELCOME!", True, WHITE)
+  title_text = font_big.render("Got any Olives?!", True, WHITE)
   screen.blit(title_text, (panel_rect.centerx - title_text.get_width() // 2, 140))
 
   # Play button
@@ -176,7 +176,7 @@ def draw_instructions_screen(screen):
 
     # Make the panel wider and centered
     panel_width = 800
-    panel_height = 500
+    panel_height = 600
     panel_x = (screen_width - panel_width) // 2
     panel_y = (screen_height - panel_height) // 2
 
@@ -187,12 +187,14 @@ def draw_instructions_screen(screen):
 
     instructions_text = [
         "INSTRUCTIONS",
+        "Build and protect your orchard from getting infected with olive quick decline", 
+        "syndrome! Be careful of mutant pathogens half way through your game!",
         "1. Use WASD keys to move, P to plant, O to water, and R to remove",
         "2. Watering and removing plants takes time",
         "3. Collect olives from tree for points using SPACE",
         "4. Use L to protect or revive a tree (1 per game)",
-        "5. Remove bugs by left clicking on them with your mouse before they",
-        "    infect your trees",
+        "5. Remove bugs by left clicking on them with your mouse before they infect your",
+        "    trees",
         "6. Collect as many points before the time runs out!",
         "7. Dead trees cannot produce olives", 
         ""
@@ -306,6 +308,7 @@ while running:
         if remaining_time <= 0:
           game_over = True
           game_running = False
+          draw_gameover_screen(screen, score)
           continue
 
         if not game_over:
@@ -333,7 +336,7 @@ while running:
                   for olive in olives.values():
                     if olive.fruit_ready and player.select_tile.colliderect(olive.rect):
                       if olive.harvest(): 
-                        score += 1000
+                        score += 100
                 if event.key == pygame.K_l:
                     for olive in olives.values():
                       if player.select_tile.colliderect(olive.rect):
@@ -430,7 +433,7 @@ while running:
         for mutant_insect in mutant_insects_to_remove:
           mutant_insects.remove(mutant_insect)
           
-        score_text = font.render("Score: " + str(score), True, (255, 255, 255))
+        score_text = font.render("Profit: " + str(score), True, (255, 255, 255))
         game_surface.blit(score_text, (10, 10))
 
         # **Draw Countdown Timer in the Middle**
