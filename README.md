@@ -4,5 +4,5 @@ I have inserted all the necessary items into this repository but it may be neces
 Please download all these files as they are seen in the repository, open `main.py` and find the `run` command in the menu bar usually located on the top left of your screen. Enjoy!
 
 Credits: 
-ChatGPT 
+ChatGPT, 
 PyGame. Pygame documentation. https://www.pygame.org/docs/. Accessed: 2025-02-28.
