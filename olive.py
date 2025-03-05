@@ -68,14 +68,14 @@ class Olive:
       self.unhealthy_start_time = pygame.time.get_ticks()
       self.status = "unhealthy"
       # Stop any further fruit production.
-      self.fruit_ready = False
+      self.fruit_ready = True
 
   def mutant_infect(self):
     if self.status == "healthy":
       self.unhealthy_start_time = pygame.time.get_ticks()
       self.status = "unhealthy"
       # Stop any further fruit production.
-      self.fruit_ready = False
+      self.fruit_ready = True
 
   def is_obstacle(self):
     if self.growth_started:
